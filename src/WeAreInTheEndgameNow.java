@@ -56,6 +56,13 @@ public class WeAreInTheEndgameNow
           System.out.println("Please enter either 'Stick' or 'Twist'");
           option = input.nextLine();
         }
+        
+        //array.indexOf
+        if(players[i].getCards().)
+        {
+
+        }
+        //If player's tempTotal > 21 && there's an ace, switch ace value 
       }
       players[i].calculatePoints();
     }
