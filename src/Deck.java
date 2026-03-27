@@ -1,33 +1,49 @@
 import java.util.*;
 
-public class Deck {
-    private ArrayList<Card> deck = new ArrayList();
+public class Deck
+{
+  private ArrayList<Card> cards;
 
-    public Deck()
+  public Deck()
+  {
+    this.cards = new ArrayList();
+    String[] suits = {
+      "diamonds", "hearts", "clubs", "spades"
+    };
+    int[] numericValue = {
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10
+    };
+    String[] cardName = {
+      "ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"
+    };
+
+    for (String suit: suits)
     {
-        String[] names = {"ace","two","three","four","five","six","seven","eight","nine","ten","Jack","King","Queen"};
-        int[] values = {1,2,3,4,5,6,7,8,9,10};
-        String[] suits = {"diamonds","hearts","clubs","spades"};
-        for (String suit : suits) //For each and every suit
-        {
-            for (int value : values) //For each and every value 
-            {
-                //Create a card and add it to deck
-                String nameOfCard = names[value - 1];
-                Card card = new Card(nameOfCard,value,suit);
-                this.deck.add(card);
-            }
-        }
-        Collections.shuffle(this.deck); //Shuffles deck
+      for (int i = 0; i <= 12; i++)
+      {
+        String name = cardName[i];
+        int worth = numericValue[i];
+        Card currentCard = new Card(suit, name, worth);
+        this.cards.add(currentCard);
+      }
+      Collections.shuffle(this.getCards());
     }
 
-    public ArrayList<Card> getCards()
-    {
-        return this.deck;
-    }
 
-    public Card draw()
-    {
-        return this.getCards().remove(1);
-    }
+  }
+
+  public void setCards(ArrayList<Card> cards)
+  {
+    this.cards = cards;
+  }
+
+  public ArrayList<Card> getCards()
+  {
+    return this.cards;
+  }
+
+  public Card drawCard()
+  {
+    return this.getCards().remove(1);
+  }
 }

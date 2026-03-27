@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class WeAreInTheEndgameNow
+public class BlackJack
 {
   public static void main(String[] args)
   {
