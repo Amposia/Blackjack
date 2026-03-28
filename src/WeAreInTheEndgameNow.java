@@ -6,12 +6,14 @@ public class WeAreInTheEndgameNow
   {
     Deck paulsDeckOfCards = new Deck();
     Scanner input = new Scanner(System.in);
-    Hand playerOne = new Hand();
-    Hand playerTwo = new Hand();
+    Hand p1 = new Hand("Player1");
+    Hand p2 = new Hand("Player2");
     Hand[] players = {
-      playerOne, playerTwo
+      p1, p2
     };
     boolean endgame = false;
+    boolean player1Stuck = false;
+    boolean player2Stuck = false;
 
     // Draw a card for each player
     for (int i = 0; i <= 1; i++)
@@ -26,12 +28,26 @@ public class WeAreInTheEndgameNow
     System.out.print("\n");
 
     // Each player takes turns
+    int index = 0;
     while (endgame == false)
     {
-      for (int i = 0; i <= 1; i++)
-    {
-      System.out.println("Player " + (i+1) + "'s turn");
-      System.out.println("Starting card: " + players[i].getCards().get(0));
+      if (player1Stuck == true && player2Stuck == true) // If one continues to twist and then sticks
+      {
+        endgame = true;
+        System.out.println("Player 1 got " + players[0].getPoints());
+        System.out.println("Player 2 got " + players[1].getPoints()); 
+      }
+      else if (player1Stuck == true && players[index].getPlayerName().equalsIgnoreCase("Player1")) // If it's player 1 who stuck, switch to player 2
+      {
+        index++;
+      }
+      else if (player2Stuck == true && players[index].getPlayerName().equalsIgnoreCase("Player2"))
+      {
+        index--;
+      }
+      players[index].calculatePoints(); 
+      System.out.println("Player " + (index+1) + "'s turn");
+      System.out.println("Your cards are: " + players[index].getCards());
 
       System.out.println("Stick or Twist?");
       String option = input.nextLine();
@@ -44,38 +60,62 @@ public class WeAreInTheEndgameNow
 
       if (option.equalsIgnoreCase("Twist"))
       {
-        Card newCard = players[i].twist(paulsDeckOfCards);
+        Card newCard = players[index].twist(paulsDeckOfCards);
         System.out.println("Card drawn: " + newCard);
-        players[i].getCards().add(newCard);
-        System.out.println("Your cards are: " + players[i].getCards());
+        players[index].getCards().add(newCard);
+        System.out.println("Your cards are: " + players[index].getCards());
+        System.out.println();
 
-        System.out.println("Stick or Twist?");
-        option = input.nextLine();
-
-        /*while (!option.equalsIgnoreCase("Stick") && !option.equalsIgnoreCase("Twist"))
+        /*System.out.println("Stick or Twist?");
+        option = input.nextLine();*/
+        players[index].calculatePoints();
+        int tempPointOnPlayerStorage = players[index].getPoints();
+        if (tempPointOnPlayerStorage > 21)
         {
-
-          System.out.println("Please enter either 'Stick' or 'Twist'");
-          option = input.nextLine();
-        }*/ //Don't need this cuz we just have to ask once, then repeat until both players say 'Stick'
+          System.out.println("Sorry! You're busted!");
+          System.out.println();
+          endgame = true;
+          System.out.println("Player 1 got " + players[0].getPoints());
+          System.out.println("Player 2 got " + players[1].getPoints()); 
+          System.out.println();
+          if (players[index].getPlayerName().equalsIgnoreCase("Player1"))
+          {
+            System.out.println("Player 2 won!");
+          }
+          else 
+          {
+            System.out.println("Player 1 won!");
+          }
+        }
         
         //array.indexOf
-        int temp = ;
-        if(players[i].getCards().) //If player's tempTotal > 21 && there's an ace, switch ace value 
+        /*int temp;
+        if(players[i].getCards()) //If player's tempTotal > 21 && there's an ace, switch ace value 
         {
 
-        }
+        }*/
       }
-      players[i].calculatePoints();
-      
-      else if (option.equalsIgnoreCase("Stick"))
+      else if (option.equalsIgnoreCase("Stick")) //If they choose stick, move onto next player 
       {
-        
+        System.out.println("You will receive no more cards");
+        System.out.println();
+        if (players[index].getPlayerName() == "Player1")
+          {
+            player1Stuck = true;
+          }
+          else
+          {
+            player2Stuck = true;
+          }
       }
-    }
-
-    System.out.println("Player 1 got " + players[0].getPoints());
-    System.out.println("Player 2 got " + players[1].getPoints());
+      if (index % 2 == 0)
+      {
+        index++;
+      }
+      else
+      {
+        index--;
+      }
     }
   }
 }

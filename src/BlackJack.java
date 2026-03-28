@@ -1,4 +1,4 @@
-import java.util.*;
+/*import java.util.*;
 
 public class BlackJack
 {
@@ -63,4 +63,4 @@ public class BlackJack
     System.out.println("Player 1 got " + players[0].getPoints());
     System.out.println("Player 2 got " + players[1].getPoints());
   }
-}
+}*/

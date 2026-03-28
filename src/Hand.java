@@ -4,6 +4,12 @@ class Hand
 {
   private ArrayList<Card> cards = new ArrayList();
   private int points;
+  private String playerName;
+
+  public Hand(String pn)
+  {
+    this.playerName = pn;
+  }
 
   public void setPoints(int points)
   {
@@ -25,6 +31,16 @@ class Hand
      return this.cards;
   }
 
+  public void setPlayerName(String pn)
+  {
+    this.playerName = pn;
+  }
+
+  public String getPlayerName()
+  {
+    return this.playerName;
+  }
+
   public Card twist(Deck deckOfCards)
   {
     return deckOfCards.drawCard();
@@ -37,6 +53,6 @@ class Hand
     {
       points += playerCard.getWorth();
     }
-    this.setPoints(points);
+   this.setPoints(points); 
   }
 }
