@@ -1,5 +1,6 @@
 import java.util.*;
-
+/* Sourish Brahma - K2504417
+   Mohamed Gaballah - K2548027 */
 public class WeAreInTheEndgameNow
 {
   public static void main(String[] args)
