@@ -70,6 +70,20 @@ public class WeAreInTheEndgameNow
         option = input.nextLine();*/
         players[index].calculatePoints();
         int tempPointOnPlayerStorage = players[index].getPoints();
+        for (Card card : players[index].getCards())
+        {
+          if (card.getWorth() == 1 && (tempPointOnPlayerStorage + 11 <= 21))
+          {
+            card.setWorth(11);
+          }
+          else if (card.getWorth() == 11 && (tempPointOnPlayerStorage > 21))
+          {
+            //card.setWorth(1); it's a comment dw
+          }
+          players[index].calculatePoints();
+          tempPointOnPlayerStorage = players[index].getPoints();
+        }
+
         if (tempPointOnPlayerStorage > 21)
         {
           System.out.println("Sorry! You're busted!");
