@@ -16,3 +16,11 @@ Meanwhile, the compiled output files will be generated in the `bin` folder by de
 ## Dependency Management
 
 The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+
+## Programming 1 Finale: The End Game 
+
+Welcome one and all to the end of year one of computer science programming. We had lots of fun in Paul's lectures, from standing on tables to the cats in the slides. Here, Mohamed and I (Sourish) present to you our solution for the End Game Gold medal of creating Black Jack in Java.
+
+It was a good run Paul 
+
+Sourish and Mohamed
