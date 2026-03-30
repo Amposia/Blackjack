@@ -85,7 +85,7 @@ public class WeAreInTheEndgameNow
           int tempPointOnPlayerStorage = players[index].getPoints();
           for (Card card : players[index].getCards())
           {
-            if (card.getWorth() == 1 && (tempPointOnPlayerStorage + 11 <= 21))
+            if (card.getWorth() == 1 && (tempPointOnPlayerStorage + 10 <= 21))
             {
               card.setWorth(11);
             }
