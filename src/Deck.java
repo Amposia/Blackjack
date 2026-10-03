@@ -26,10 +26,9 @@ public class Deck
         Card currentCard = new Card(suit, name, worth);
         this.cards.add(currentCard);
       }
-      Collections.shuffle(this.getCards());
     }
-
-
+    
+    Collections.shuffle(this.getCards());
   }
 
   public void setCards(ArrayList<Card> cards)
