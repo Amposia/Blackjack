@@ -51,8 +51,17 @@ class Hand
     int points = 0;
     for (Card playerCard : this.getCards())
     {
-      points += playerCard.getWorth();
+      points += playerCard.getWorth(); //base card values
     }
+
+    for (Card playerCard : this.getCards())
+    {
+      if (playerCard.getName().equalsIgnoreCase("ace") && (points + 10 <= 21))
+      {
+        points += 10; //if adding 10 to the ace keeps points under or equal to 21, add 10 to points
+      }
+    }
+
    this.setPoints(points); 
   }
 }

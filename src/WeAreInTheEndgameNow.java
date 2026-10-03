@@ -23,6 +23,7 @@ public class WeAreInTheEndgameNow
       Card currentCard = paulsDeckOfCards.drawCard();
       System.out.println("Player "+ (i+1) + " drew " +currentCard);
       players[i].getCards().add(currentCard);
+      players[i].calculatePoints();
     }
 
     // Add an empty line to make it more clear
@@ -60,7 +61,6 @@ public class WeAreInTheEndgameNow
       }
       else
       {
-        players[index].calculatePoints(); 
         System.out.println("Player " + (index+1) + "'s turn");
         System.out.println("Your cards are: " + players[index].getCards());
 
@@ -77,26 +77,14 @@ public class WeAreInTheEndgameNow
         {
           Card newCard = players[index].twist(paulsDeckOfCards);
           System.out.println("Card drawn: " + newCard);
+          
           players[index].getCards().add(newCard);
           System.out.println("Your cards are: " + players[index].getCards());
+          players[index].calculatePoints();
+
           System.out.println();
 
-          players[index].calculatePoints();
           int tempPointOnPlayerStorage = players[index].getPoints();
-          for (Card card : players[index].getCards())
-          {
-            if (card.getWorth() == 1 && (tempPointOnPlayerStorage + 10 <= 21))
-            {
-              card.setWorth(11);
-            }
-            else if (card.getWorth() == 11 && (tempPointOnPlayerStorage > 21))
-            {
-              card.setWorth(1);
-            }
-            players[index].calculatePoints();
-            tempPointOnPlayerStorage = players[index].getPoints();
-          }
-
           if (tempPointOnPlayerStorage > 21) //Bust logic
           {
             System.out.println("Sorry! You're busted!");
