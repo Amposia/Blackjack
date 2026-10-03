@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 class Hand
 {
-  private ArrayList<Card> cards = new ArrayList();
-  private int points;
+  private ArrayList<Card> cards = new ArrayList<Card>(); // ArrayList to hold the cards in the hand
+  private int points; // Variable to hold the total points of the hand
   private String playerName;
 
-  public Hand(String pn)
+  public Hand(String pn) // Constructor for the Hand class, takes a player name as a parameter
   {
     this.playerName = pn;
   }
@@ -41,20 +41,22 @@ class Hand
     return this.playerName;
   }
 
-  public Card twist(Deck deckOfCards)
+  public Card twist(Deck deckOfCards) // Method to draw a card from the deck and add it to the hand
   {
-    return deckOfCards.drawCard();
+    Card cardDrawn = deckOfCards.drawCard();
+    this.getCards().add(cardDrawn);
+    return cardDrawn;
   }
 
-  public void calculatePoints()
+  public void calculatePoints() // Method to calculate the total points of the hand based on the cards in it
   {
-    int points = 0;
-    for (Card playerCard : this.getCards())
+    int points = 0; // Variable to hold the total points of the hand, intialized to 0
+    for (Card playerCard : this.getCards()) // For each card in the hand, add its worth to the total points
     {
-      points += playerCard.getWorth(); //base card values
+      points += playerCard.getWorth(); // Base card worth
     }
 
-    for (Card playerCard : this.getCards())
+    for (Card playerCard : this.getCards()) // For each card in the hand, check if it is an ace
     {
       if (playerCard.getName().equalsIgnoreCase("ace") && (points + 10 <= 21))
       {
@@ -62,6 +64,6 @@ class Hand
       }
     }
 
-   this.setPoints(points); 
+   this.setPoints(points); // Set the total points of the hand to the calculated value
   }
 }
