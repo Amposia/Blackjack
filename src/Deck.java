@@ -44,6 +44,6 @@ public class Deck
 
   public Card drawCard()
   {
-    return this.getCards().remove(1);
+    return this.getCards().remove(0);
   }
 }
