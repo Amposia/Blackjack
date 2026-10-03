@@ -108,7 +108,7 @@ public class WeAreInTheEndgameNow
         {
           System.out.println("You will receive no more cards");
           System.out.println();
-          if (players[index].getPlayerName() == "Player1")
+          if (players[index].getPlayerName().equalsIgnoreCase("Player1"))
             {
               player1Stuck = true;
             }
