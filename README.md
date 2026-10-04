@@ -1,26 +1,39 @@
-## Getting Started
+# Blackjack Game - Java
+A console-based Blackjack game co-developed using Java. The project was created as part of a university programming module and focuses on applying object-oriented programming concepts to a playable card game.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Features
+- Two-player console-based Blackjack game
+- Stick or Twist gameplay
+- Blackjack scoring with Aces dynamically counted as 1 or 11
+- Bust detection and winner determination
 
-## Folder Structure
+## Technologies
+- Java
+- Object-Oriented programming
 
-The workspace contains two folders by default, where:
+## How It Works
+The game creates and shuffles a standard 52-card deck before dealing an initial card to each player.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Players take turns choosing between:
+- **Twist**: draw another card and recalculate the hand's score.
+- **Stick**: stop drawing cards and allow the other player to continue.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+The game ends when both player stick (the player closest to 21 points wins, or no-one wins if there is a tie) or a player busts (then the other player wins).
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+### Ace handling
+Aces have a base value of 1. When calculating a hand's score, the program checks whether an Ace can instead contribute an additional 10 points without taking the hand above 21. This allows an Ace to effectively count as either 1 or 11 without changing the card object's stored value.
 
-## Dependency Management
+## Collaboration
+This project was co-developed with Sourish Brahma (Sikronic) using a paired-programming approach. Both developers worked together on the implementation, debugging, testing, and improvement of the game.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Project Structure
+- Card: Represents an individual playing card, including its suit, name, and base value.
+- Deck: Creates, stores, shuffles, and draws cards from the deck.
+- Hand: Stores a player's cards and calculates their points.
+- Blackjack: Controls the game flow, player turns, input, and win/loss conditions.
 
-## Programming 1 Finale: The End Game 
-
-Welcome one and all to the end of year one of computer science programming. We had lots of fun in Paul's lectures, from standing on tables to the cats in the slides. Here, Mohamed and I (Sourish) present to you our solution for the End Game Gold medal of creating Black Jack in Java.
-
-It was a good run Paul 
-
-Sourish and Mohamed
+## Running the Project
+1. Clone the repository
+2. Open the project in a Java-compatible IDE such as Visual Studio Code.
+3. Run _Blackjack.java_.
+4. Follow the instructions displayed in the console.
