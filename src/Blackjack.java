@@ -26,15 +26,15 @@ public class Blackjack
     System.out.println();
   
     System.out.println("Player 1, please enter your name: ");
-    Hand player1 = new Hand(userInput.nextLine()); // Create a new Hand object for player 1 with the entered name
+    Hand player1 = new Hand(userInput.nextLine());
 
     System.out.println();
 
     System.out.println("Player 2, please enter your name: ");
-    Hand player2 = new Hand(userInput.nextLine()); // Create a new Hand object for player 2 with the entered name
+    Hand player2 = new Hand(userInput.nextLine());
     System.out.println();
 
-    Hand[] players = { // Create an array of players
+    Hand[] players = {
       player1, player2
     };
 
@@ -45,43 +45,43 @@ public class Blackjack
     for (Hand player : players) // Draw a card for each player
     {
       System.out.println((player.getPlayerName()) + " drawing a card");
-      Card cardDrawn = gameDeck.drawCard(); // Draw a card from the deck
+      Card cardDrawn = gameDeck.drawCard();
 
       System.out.println((player.getPlayerName()) + " drew " +cardDrawn);
       player.getCards().add(cardDrawn); // Add the drawn card to the player's hand
-      player.calculatePoints(); // Calculate the total points of the player's hand based on the cards drawn
+      player.calculatePoints();
 
       System.out.println();
     }
 
     int playerTurn = 0; // Variable to track which player's turn it is (0 for player 1, 1 for player 2)
-    while (endgame == false) // While the game has not ended, continue the game loop
+    while (!endgame) // While the game has not ended, continue the game loop
     {
-      if (player1Stuck == true && player2Stuck == true) // If both players have stuck, determine the winner based on their points
+      if (player1Stuck && player2Stuck) // If both players have stuck, determine the winner based on their points
       {
         System.out.println(player1.getPlayerName() + " got " + player1.getPoints());
         System.out.println(player2.getPlayerName() + " got " + player2.getPoints()); 
 
-        if (player1.getPoints() > player2.getPoints()) // If player 1 has more points than player 2, player 1 wins
+        if (player1.getPoints() > player2.getPoints())
         {
           System.out.println(player1.getPlayerName() + " won!");
         }
-        else if (player2.getPoints() > player1.getPoints()) // If player 2 has more points than player 1, player 2 wins
+        else if (player2.getPoints() > player1.getPoints())
         {
           System.out.println(player2.getPlayerName() + " won!");
         }
-        else // If both players have the same amount of points, neither player wins
+        else
         {
           System.out.println("Neither player wins, both have the same amount of points!");
         }
-        endgame = true; // End the game
+        endgame = true;
       }
 
-      else if (player1Stuck == true && playerTurn == 0) // If it's player 1 who stuck, switch to player 2
+      else if (player1Stuck && playerTurn == 0) // If it's player 1 who stuck, switch to player 2
       {
         playerTurn++;
       }
-      else if (player2Stuck == true && playerTurn == 1) // If it's player 2 who stuck, switch to player 1
+      else if (player2Stuck && playerTurn == 1) // If it's player 2 who stuck, switch to player 1
       {
         playerTurn--;
       }
@@ -102,11 +102,11 @@ public class Blackjack
 
         if (option.equalsIgnoreCase("Twist")) // If the player chooses to twist, draw a card from the deck and add it to their hand
         {
-          Card newCard = players[playerTurn].twist(gameDeck); // Draw a card from the deck and add it to the current player's hand
+          Card newCard = players[playerTurn].twist(gameDeck);
           System.out.println("Card drawn: " + newCard);
           
-          System.out.println("Your cards are: " + players[playerTurn].getCards()); // Display the current player's cards
-          players[playerTurn].calculatePoints(); // Calculate the total points of the current player's hand
+          System.out.println("Your cards are: " + players[playerTurn].getCards());
+          players[playerTurn].calculatePoints();
 
           System.out.println();
 

@@ -11,29 +11,14 @@ public class Card
     this.worth = w;
   }
 
-  public void setSuit(String suit)
-  {
-     this.suit = suit;
-  }
-
   public String getSuit()
   {
      return this.suit;
   }
 
-  public void setName(String name)
-  {
-     this.name = name;
-  }
-
   public String getName()
   {
      return this.name;
-  }
-
-  public void setWorth(int worth)
-  {
-     this.worth = worth;
   }
 
   public int getWorth()

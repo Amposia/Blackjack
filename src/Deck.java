@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck
 {
@@ -30,11 +31,6 @@ public class Deck
     }
 
     Collections.shuffle(this.getCards()); // Shuffle the deck of cards
-  }
-
-  public void setCards(ArrayList<Card> cards)
-  {
-    this.cards = cards;
   }
 
   public ArrayList<Card> getCards()
